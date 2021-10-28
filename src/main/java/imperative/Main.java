@@ -1,25 +1,32 @@
 package imperative;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
         List<Person> people = List.of(
-            new Person(name: "John", Gender.MALE),
-            new Person(name: "Maria", Gender.FEMALE),
-            new Person(name: "Aisha", Gender.MALE),
-            new Person(name: "Alex", Gender.MALE),
-            new Person(name: "Alice", Gender.FEMALE),
+            new Person("John", Gender.MALE),
+            new Person("Maria", Gender.FEMALE),
+            new Person("Aisha", Gender.FEMALE),
+            new Person("Alex", Gender.MALE),
+            new Person("Alice", Gender.FEMALE)
         );
 
         // Imperative approach
-        List<Person> females = List.of();
+        List<Person> females = new ArrayList<>();
 
         for (Person person : people){
             if (Gender.FEMALE.equals(person.gender)){
                 females.add(person);
             }
         }
+
+        for (Person female : females){
+            System.out.println(female);
+        }
+
     }
 
     static class Person {
