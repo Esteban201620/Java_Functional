@@ -1,7 +1,9 @@
 package imperative;
 
+import java.net.SocketOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,7 +15,7 @@ public class Main {
             new Person("Alex", Gender.MALE),
             new Person("Alice", Gender.FEMALE)
         );
-
+        System.out.println("// Imperative approach");
         // Imperative approach
         List<Person> females = new ArrayList<>();
 
@@ -22,10 +24,17 @@ public class Main {
                 females.add(person);
             }
         }
-
         for (Person female : females){
             System.out.println(female);
         }
+
+        System.out.println("// Declarative approach");
+        // Declarative Approach
+        people.stream()
+                .filter(person -> Gender.FEMALE.equals(person.gender))
+                .collect(Collectors.toList())
+                .forEach(System.out::println);
+
 
     }
 
