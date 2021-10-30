@@ -3,6 +3,7 @@ package imperative;
 import java.net.SocketOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -30,10 +31,11 @@ public class Main {
 
         System.out.println("// Declarative approach");
         // Declarative Approach
-        people.stream()
-                .filter(person -> Gender.FEMALE.equals(person.gender))
-                .collect(Collectors.toList())
-                .forEach(System.out::println);
+        Predicate<Person> personPredicate = person -> Gender.FEMALE.equals(person.gender);
+        List<Person> female2 = people.stream()
+                .filter(personPredicate)
+                .collect(Collectors.toList());
+        female2.forEach(System.out::println);
 
 
     }
